@@ -10,7 +10,7 @@ module.exports = (function () {
             throw 'Invalid 2nd argument: "' + typeof delegateValues + '", array expected!';
         }
 
-        var arity = fn.length;
+        var arity = fn.arity >= 0 ? fn.arity : fn.length;
         var map = [];
         var idx = 0;
 
@@ -22,7 +22,7 @@ module.exports = (function () {
             }
         }
 
-        return function delegated() {
+        var wrapper = function delegareWrapper() {
             var args = [];
 
             for (var i = 0, l = arity; i < l; i++) {
@@ -37,5 +37,9 @@ module.exports = (function () {
 
             return fn.apply(this, args);
         };
+
+        wrapper.arity = arity;
+
+        return wrapper;
     };
 }());

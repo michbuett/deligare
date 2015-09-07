@@ -42,6 +42,19 @@ describe('deligare', function () {
         expect(spy).toHaveBeenCalledWith('foo', 'bar', 'baz');
     });
 
+    it('allows multiple binding', function () {
+        // prepare
+        var spy = jasmine.createSpy('orgFn');
+        var orgFn = function (a, b, c) { spy(a, b, c); };
+        var newFn = del(del(del(orgFn, ['foo']), ['bar']), ['baz']);
+
+        // execute
+        newFn();
+
+        // verify
+        expect(spy).toHaveBeenCalledWith('foo', 'bar', 'baz');
+    });
+
     it('makes the new function return the result of the original one', function () {
         // prepare
         var orgFn = function (a, b, c) { return a + b + c; };
