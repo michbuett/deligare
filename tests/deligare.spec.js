@@ -55,6 +55,19 @@ describe('deligare', function () {
         expect(spy).toHaveBeenCalledWith('foo', 'bar', 'baz');
     });
 
+    it('allows to bind the execution context (this)', function () {
+        // prepare
+        var expectedScope = {};
+        var spy = jasmine.createSpy('orgFn');
+        var newFn = del(spy, [], expectedScope);
+
+        // execute
+        newFn();
+
+        // verify
+        expect(spy.calls.mostRecent().object).toBe(expectedScope);
+    });
+
     it('makes the new function return the result of the original one', function () {
         // prepare
         var orgFn = function (a, b, c) { return a + b + c; };

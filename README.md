@@ -8,7 +8,7 @@ A most flexible and powerful function parameter delegation utility.
 
 As easy as this:
 ```js
-var del = require('delegare');
+var del = require('deligare');
 var add = function (a, b) {
     return a + b;
 };
@@ -33,7 +33,7 @@ npm install deligare
 
 ## So it is a nodejs module. How can use it in a browser based app?
 
-Don't worry. The package provides a bundled (and minified) standalone JS file which can be included, e.g.: 
+Don't worry. The package provides a bundled (and minified) standalone JS file which can be included, e.g.:
 ```html
 <script src="{path}/dist/deligare.min.js"></script>
 ```

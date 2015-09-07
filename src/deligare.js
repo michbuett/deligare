@@ -1,7 +1,37 @@
 module.exports = (function () {
     'use strict';
 
-    return function deligare (fn, delegateValues) {
+    /**
+     * Creates the bound wrapper function
+     *
+     * @example
+     * <pre><code>
+     * var del = require('deligare');
+     *
+     * var add = function (a, b) {
+     *     return a + b;
+     * };
+     *
+     * var sub = function (a, b) {
+     *     return a - b;
+     * };
+     *
+     * var addOne = del(add, [1]);
+     * var subTwo = del(sub, [undefined, 2]);
+     *
+     * addOne(5); // -> 6 (equivalent to "add(1, 5)")
+     * subTwo(5); // -> 3 (equivalent to "sub(5, 2)")
+     * </code></pre>
+     *
+     * @param {Function} fn Required. The original function
+     * @param {Array} delegateValues Required. The list of parameter values which
+     *      should be bound to the new function. It is possible to skip parameter
+     *      when passing "undefined" (e.g. deligare(fn, [undefined, 'foo'])
+     * @param {Object} [scope] Optional. The execution context for the bound wrapper
+     *
+     * @return {Function} The bound wrapper function
+     */
+    return function deligare (fn, delegateValues, scope) {
         if (typeof fn !== 'function') {
             throw 'Invalid 1st argument: "' + typeof fn + '", function expected!';
         }
@@ -35,7 +65,7 @@ module.exports = (function () {
                 }
             }
 
-            return fn.apply(this, args);
+            return fn.apply(scope || this, args);
         };
 
         wrapper.arity = arity;
