@@ -42,6 +42,18 @@ describe('deligare', function () {
         expect(spy).toHaveBeenCalledWith('foo', 'bar', 'baz');
     });
 
+    it('makes the new function return the result of the original one', function () {
+        // prepare
+        var orgFn = function (a, b, c) { return a + b + c; };
+        var newFn = del(orgFn, [undefined, undefined, 3]);
+
+        // execute
+        var result = newFn(1, 2);
+
+        // verify
+        expect(result).toBe(1 + 2 + 3);
+    });
+
     it('throws an error if no function is passed as 1st argument', function () {
         expect(function () { del(); }).toThrow('Invalid 1st argument: "undefined", function expected!');
         expect(function () { del(1); }).toThrow('Invalid 1st argument: "number", function expected!');

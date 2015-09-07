@@ -22,7 +22,7 @@ module.exports = (function () {
             }
         }
 
-        return function () {
+        return function delegated() {
             var args = [];
 
             for (var i = 0, l = arity; i < l; i++) {
@@ -35,7 +35,7 @@ module.exports = (function () {
                 }
             }
 
-            fn.apply(this, args);
+            return fn.apply(this, args);
         };
     };
 }());
