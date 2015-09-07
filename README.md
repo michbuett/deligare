@@ -25,8 +25,16 @@ subTwo(5); // -> 3 (equivalent to "sub(5, 2)")
 
 ## How do I get it?
 
-You can install it using npm:
+You can use npm install it:
 
-```js
+```bash
 npm install deligare
 ```
+
+## So it is a nodejs module. How can use it in a browser based app?
+
+Don't worry. The package provides a bundled (and minified) standalone JS file which can be included, e.g.: 
+```html
+<script src="{path}/dist/deligare.min.js"></script>
+```
+Alternatively you can use tools like browserify to include it in your project. The lib has no further dependencies and should run fine in any browser environment.
