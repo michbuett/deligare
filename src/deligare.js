@@ -6,8 +6,6 @@ module.exports = (function () {
      *
      * @example
      * <pre><code>
-     * var del = require('deligare');
-     *
      * var add = function (a, b) {
      *     return a + b;
      * };
@@ -16,8 +14,8 @@ module.exports = (function () {
      *     return a - b;
      * };
      *
-     * var addOne = del(add, [1]);
-     * var subTwo = del(sub, [undefined, 2]);
+     * var addOne = deligare(add, [1]);
+     * var subTwo = deligare(sub, [undefined, 2]);
      *
      * addOne(5); // -> 6 (equivalent to "add(1, 5)")
      * subTwo(5); // -> 3 (equivalent to "sub(5, 2)")
