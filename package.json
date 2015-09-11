@@ -2,7 +2,7 @@
   "name": "deligare",
   "version": "1.1.0",
   "description": "Brew new prototypes the magic way",
-  "main": "index.js",
+  "main": "src/deligare.js",
   "scripts": {
     "test": "grunt test && grunt coveralls",
     "prepublish": "grunt dist"
